@@ -1,6 +1,13 @@
 # Peter Carroll
-# 28 September 2017
 # Tool for tracking survey durations, by enumerator
+# Generate test data
+set.seed(20170928)
+data <- data.frame(enum_id = rep(seq(1:15), 20),
+                   duration = round(rnorm(300, 60, 15)),
+                   survey_type = round(runif(300, 1, 3)),
+                   stringsAsFactors = F)
+head(data)
+
 # Graph function takes arguments for the data, enumerator ID ("enum_id"), duration, and survey_type (sometimes some respondents receive different versions of the survey with varying lengths. Providing a string or numeric variable for this argument colors the dots by survey type. Note that it may be more useful to subset the data and produce separate graphs for these different survey versions).
 survey_tracker_graph <- function(data, enum_id, duration, survey_type) {
   require(ggplot2)
@@ -43,7 +50,7 @@ survey_tracker_graph <- function(data, enum_id, duration, survey_type) {
       # Use survey type to color values
       geom_point(aes(color = factor(survey_type)),
                  alpha = 0.6, 
-      # Jitter these dots for easier viewing
+                 # Jitter these dots for easier viewing
                  position = position_jitter(width = 0.1)) +
       labs(color = "Survey type") +
       # Blank theme
@@ -67,3 +74,14 @@ survey_tracker_graph <- function(data, enum_id, duration, survey_type) {
   }
   return(p)
 }
+
+# Graph without survey type
+make_graph(data = data, 
+           enum_id = enum_id,
+           duration = duration)
+
+# Graph with survey type
+make_graph(data = data, 
+           enum_id = enum_id,
+           duration = duration, 
+           survey_type = survey_type)
