@@ -1,4 +1,5 @@
-Peter Carroll
+Peter Carroll 
+
 28 September 2017
 
 This R function takes arguments for the data, enumerator ID ("enum_id"), duration, and survey_type, and produces a graph that displays boxplots of survey duration and jittered points of each survey duration, all by enumerator. 
