@@ -77,12 +77,12 @@ survey_tracker_graph <- function(data, enum_id, duration, survey_type) {
 }
 
 # Graph without survey type
-make_graph(data = data, 
-           enum_id = enum_id,
-           duration = duration)
+survey_tracker_graph(data = data, 
+                     enum_id = enum_id,
+                     duration = duration)
 
 # Graph with survey type
-make_graph(data = data, 
-           enum_id = enum_id,
-           duration = duration, 
-           survey_type = survey_type)
+survey_tracker_graph(data = data, 
+                     enum_id = enum_id,
+                     duration = duration, 
+                     survey_type = survey_type)
